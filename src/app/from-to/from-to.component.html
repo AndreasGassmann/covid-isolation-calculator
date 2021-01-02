@@ -1,0 +1,31 @@
+<ng-container>
+  <h2>
+    {{ title }}
+    <button type="button" class="btn btn-primary" [tooltip]="data.explanation">
+      ?
+    </button>
+  </h2>
+  <table style="font-size: 30px">
+    <tr>
+      <td>Von</td>
+      <td>
+        <b>{{ data.start }}</b>
+      </td>
+    </tr>
+    <tr>
+      <td>Bis und mit</td>
+      <td>
+        <b>{{ data.end }}</b>
+      </td>
+    </tr>
+    <tr>
+      <td>Dauer</td>
+      <td>
+        (<b>{{ data.duration }}</b> Tage)
+      </td>
+    </tr>
+  </table>
+
+  <br />
+  Berechnung: {{ data.calculation }}
+</ng-container>
