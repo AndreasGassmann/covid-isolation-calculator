@@ -264,12 +264,21 @@
 
 <div class="content" role="main">
   <!-- Resources -->
-  <div class="row">
-    <h2>Daten</h2>
+  <div>
+    <h2>Eingabe</h2>
 
     <div class="card-container">
       <div class="row">
-        <div class="col-12 col-md-3 pb-3 pb-md-0">
+        <div class="col-10 col-md-2 pb-2 pb-md-0">
+          Name
+          <input
+            type="text"
+            placeholder="Name"
+            class="form-control"
+            [(ngModel)]="name"
+          />
+        </div>
+        <div class="col-10 col-md-2 pb-2 pb-md-0">
           Symptombeginn
           <input
             type="text"
@@ -288,7 +297,7 @@
             }"
           />
         </div>
-        <div class="col-12 col-md-3 pb-3 pb-md-0">
+        <div class="col-10 col-md-2 pb-2 pb-md-0">
           Abnahmedatum
           <input
             type="text"
@@ -307,7 +316,7 @@
             }"
           />
         </div>
-        <div class="col-12 col-md-3 pb-3 pb-md-0">
+        <div class="col-10 col-md-2 pb-2 pb-md-0">
           Resultatdatum
           <input
             type="text"
@@ -326,7 +335,7 @@
             }"
           />
         </div>
-        <div class="col-12 col-md-3 pb-3 pb-md-0">
+        <div class="col-10 col-md-2 pb-2 pb-md-0">
           Isolationsbeginn
           <input
             type="text"
@@ -346,6 +355,46 @@
           />
         </div>
       </div>
+    </div>
+
+    <div>
+      <h2>Infizierte Personen</h2>
+      <br />
+
+      <div>
+        <ngx-datatable [rows]="isolationRows" [columns]="isolationColumns">
+        </ngx-datatable>
+      </div>
+      <br />
+
+      <h2>Mitbewohner (nicht infizierte Personen)</h2>
+      <br />
+      <div>
+        <input
+          type="checkbox"
+          id="canIsolate"
+          name="canIsolate"
+          [checked]="canIsolate"
+          (click)="canIsolateClicked()"
+        />
+        <label style="padding-left: 5px" for="canIsolate"
+          >Infizierte Personen können sich isolieren</label
+        >
+      </div>
+      <br />
+
+      <div>
+        <ngx-datatable [rows]="quarantineRows" [columns]="quarantineColumns">
+        </ngx-datatable>
+      </div>
+
+      <h2>Kontaktpersonen (leben nicht im gleichen Haushalt)</h2>
+      <br />
+      <p>
+        Sonstige Kontaktpersonen müssen sich für 10 Tage isolieren. Startdatum
+        ist
+        <b>der letzte Kontakt mit der infizierten Person</b>.
+      </p>
     </div>
 
     <div class="row">
@@ -371,17 +420,6 @@
         </alert>
         Andere Personen im Haushalt müssen sich ab Isolationsdatum für 10 Tage
         in Quarantäne begeben.
-
-        <div>
-          <input
-            type="checkbox"
-            id="canIsolate"
-            name="canIsolate"
-            [checked]="canIsolate"
-            (click)="canIsolateClicked()"
-          />
-          <label for="canIsolate">Person kann sich isolieren</label>
-        </div>
 
         <ng-container *ngIf="canIsolate">
           <app-from-to

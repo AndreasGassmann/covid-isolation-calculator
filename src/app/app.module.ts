@@ -15,6 +15,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { FormsModule } from '@angular/forms';
 import { FromToComponent } from './from-to/from-to.component';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,7 @@ import { FromToComponent } from './from-to/from-to.component';
     AlertModule.forRoot(),
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    NgxDatatableModule,
     FormsModule
   ],
   providers: [],
